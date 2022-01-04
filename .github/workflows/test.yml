@@ -31,7 +31,13 @@ jobs:
           ENABLE_GAS_REPORT: true
       # - run: npm run test:inheritance
       - name: Print gas report
-        run: cat gas-report.txt
+        run: ls
+      - name: Deploy on Ropsten
+        run: npm run deploy:ropsten
+        env:
+          ROPSTEN_URL: $secrets.ROPSTEN_URL
+          PRIVATE_KEY: $secrets.PRIVATE_KEY
+          REPORT_GAS: true
 
   coverage:
     runs-on: ubuntu-latest

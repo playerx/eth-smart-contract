@@ -1,7 +1,9 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "coverage": "env COVERAGE=true hardhat coverage",
+    "deploy:ropsten": "hardhat run scripts/deploy.ts --network ropsten"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
