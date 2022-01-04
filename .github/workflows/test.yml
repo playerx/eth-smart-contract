@@ -35,8 +35,8 @@ jobs:
       - name: Deploy on Ropsten
         run: npm run deploy:ropsten
         env:
-          ROPSTEN_URL: $secrets.ROPSTEN_URL
-          PRIVATE_KEY: $secrets.PRIVATE_KEY
+          ROPSTEN_URL: "${{ secrets.ROPSTEN_URL }}"
+          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
           REPORT_GAS: true
 
   coverage:
