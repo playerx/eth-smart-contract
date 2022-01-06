@@ -3,7 +3,7 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -14,17 +14,16 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
+  // const Ezeki = await ethers.getContractFactory("Ezeki");
+  // const ezeki = await Ezeki.deploy();
+
+  // await ezeki.deployed();
+
   const Ezeki = await ethers.getContractFactory("Ezeki");
-  const ezeki = await Ezeki.deploy();
+  const instance = await upgrades.deployProxy(Ezeki, ["playerx", "jokAvatar"]);
+  await instance.deployed();
 
-  await ezeki.deployed();
-
-  console.log("Ezeki contract deployed to:", ezeki.address);
-
-  // await run("verify:verify", {
-  //   address: ezeki.address,
-  //   constructorArguments: [],
-  // });
+  console.log("Proxy contract deployed to:", instance.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
