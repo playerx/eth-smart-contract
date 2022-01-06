@@ -22,7 +22,7 @@ contract Ezeki is Initializable{
     }
 
     function sayHi() public pure returns (string memory) {
-        return "Hello World 4";
+        return "Hello World";
     }
 
     function sum(int256 a, int256 b) public pure returns (int256) {
